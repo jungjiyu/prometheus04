@@ -1,9 +1,7 @@
 package com.example.ai01.ai.groq.controller;
 
-import com.example.ai01.ai.groq.dto.GroqApiRequest;
+import com.example.ai01.ai.groq.dto.request.GroqApiRequest;
 import com.example.ai01.ai.groq.service.GroqApiService;
-import com.example.ai01.ai.openAI.dto.OpenAIRequest;
-import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +13,6 @@ public class GroqApiController {
 
     @Autowired
     private GroqApiService groqApiService;
-
-
 
 
     // 프롬프트 직접

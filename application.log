@@ -3778,7 +3778,7 @@ java.lang.IllegalArgumentException: Invalid username or password
 2024-09-12T15:51:51.398+09:00  INFO 9072 --- [ai01] [http-nio-8080-exec-9] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: testuser100
 2024-09-12T15:51:51.404+09:00  INFO 9072 --- [ai01] [http-nio-8080-exec-9] c.e.a.a.a.s.AzureComputerVisionService   : Created endpoint: https://visiontestweb.cognitiveservices.azure.com/computervision/imageanalysis:analyze
 2024-09-12T15:51:51.406+09:00  INFO 9072 --- [ai01] [http-nio-8080-exec-9] c.e.a.a.a.s.AzureComputerVisionService   : Created body: {"features":["caption"],"language":"en","url":"https://picsum.photos/200"}
-2024-09-12T15:51:53.785+09:00  INFO 9072 --- [ai01] [http-nio-8080-exec-9] c.e.a.a.a.s.AzureComputerVisionService   : groqAPIRequest: com.example.ai01.ai.groq.dto.GroqApiRequest@1ecb5264
+2024-09-12T15:51:53.785+09:00  INFO 9072 --- [ai01] [http-nio-8080-exec-9] c.e.a.a.a.s.AzureComputerVisionService   : groqAPIRequest: com.example.ai01.ai.groq.dto.request.GroqApiRequest@1ecb5264
 2024-09-12T15:51:54.182+09:00  INFO 9072 --- [ai01] [http-nio-8080-exec-9] i.StatisticalLoggingSessionEventListener : Session Metrics {
     0 nanoseconds spent acquiring 0 JDBC connections;
     0 nanoseconds spent releasing 0 JDBC connections;
@@ -5093,7 +5093,9 @@ java.io.IOException: Unexpected code Response{protocol=h2, code=400, message=, u
 2024-09-12T16:50:59.964+09:00  INFO 7028 --- [ai01] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
 2024-09-12T16:51:00.034+09:00  INFO 7028 --- [ai01] [http-nio-8080-exec-1] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/openai/harmfulness
 2024-09-12T16:51:00.034+09:00  INFO 7028 --- [ai01] [http-nio-8080-exec-1] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: testuser100
-2024-09-12T16:51:00.067+09:00  INFO 7028 --- [ai01] [http-nio-8080-exec-1] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"\n    }"}], "max_tokens": 100}
+2024-09-12T16:51:00.067+09:00  INFO 7028 --- [ai01] [http-nio-8080-exec-1] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{
+\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"
+\n    }"}], "max_tokens": 100}
 2024-09-12T16:51:00.429+09:00  INFO 7028 --- [ai01] [http-nio-8080-exec-1] i.StatisticalLoggingSessionEventListener : Session Metrics {
     0 nanoseconds spent acquiring 0 JDBC connections;
     0 nanoseconds spent releasing 0 JDBC connections;
@@ -5279,7 +5281,9 @@ java.io.IOException: Unexpected code Response{protocol=h2, code=400, message=, u
 }
 2024-09-12T16:52:33.754+09:00  INFO 7028 --- [ai01] [http-nio-8080-exec-5] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/openai/harmfulness
 2024-09-12T16:52:33.754+09:00  INFO 7028 --- [ai01] [http-nio-8080-exec-5] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: testuser100
-2024-09-12T16:52:33.756+09:00  INFO 7028 --- [ai01] [http-nio-8080-exec-5] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"\n    }"}], "max_tokens": 100}
+2024-09-12T16:52:33.756+09:00  INFO 7028 --- [ai01] [http-nio-8080-exec-5] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{
+\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"
+\n    }"}], "max_tokens": 100}
 2024-09-12T16:52:33.947+09:00  INFO 7028 --- [ai01] [http-nio-8080-exec-5] i.StatisticalLoggingSessionEventListener : Session Metrics {
     0 nanoseconds spent acquiring 0 JDBC connections;
     0 nanoseconds spent releasing 0 JDBC connections;
@@ -5560,7 +5564,9 @@ java.io.IOException: Unexpected code Response{protocol=h2, code=400, message=, u
 2024-09-12T16:53:33.877+09:00  INFO 5728 --- [ai01] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 2024-09-12T16:53:33.950+09:00  INFO 5728 --- [ai01] [http-nio-8080-exec-2] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/openai/harmfulness
 2024-09-12T16:53:33.950+09:00  INFO 5728 --- [ai01] [http-nio-8080-exec-2] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: testuser100
-2024-09-12T16:53:33.989+09:00  INFO 5728 --- [ai01] [http-nio-8080-exec-2] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"\n    }"}], "max_tokens": 100}
+2024-09-12T16:53:33.989+09:00  INFO 5728 --- [ai01] [http-nio-8080-exec-2] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{
+\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"
+\n    }"}], "max_tokens": 100}
 2024-09-12T16:53:34.329+09:00  INFO 5728 --- [ai01] [http-nio-8080-exec-2] i.StatisticalLoggingSessionEventListener : Session Metrics {
     0 nanoseconds spent acquiring 0 JDBC connections;
     0 nanoseconds spent releasing 0 JDBC connections;
@@ -5952,7 +5958,9 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2024-09-06T05:42:21Z. Curren
 2024-09-12T16:56:21.527+09:00  INFO 10068 --- [ai01] [http-nio-8080-exec-5] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/openai/harmfulness
 2024-09-12T16:56:21.527+09:00  INFO 10068 --- [ai01] [http-nio-8080-exec-5] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: testuser100
 2024-09-12T16:56:21.529+09:00  INFO 10068 --- [ai01] [http-nio-8080-exec-5] c.e.a.a.openAI.service.OpenAIApiService  : jeeeeeeeee 
-2024-09-12T16:56:21.530+09:00  INFO 10068 --- [ai01] [http-nio-8080-exec-5] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"\n    }"}], "max_tokens": 100}
+2024-09-12T16:56:21.530+09:00  INFO 10068 --- [ai01] [http-nio-8080-exec-5] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{
+\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"
+\n    }"}], "max_tokens": 100}
 2024-09-12T16:56:21.895+09:00  INFO 10068 --- [ai01] [http-nio-8080-exec-5] i.StatisticalLoggingSessionEventListener : Session Metrics {
     0 nanoseconds spent acquiring 0 JDBC connections;
     0 nanoseconds spent releasing 0 JDBC connections;
@@ -6487,7 +6495,9 @@ org.springframework.web.client.HttpClientErrorException$NotFound: 404 Not Found:
 2024-09-12T18:09:04.262+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/openai/harmfulness
 2024-09-12T18:09:04.262+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: testuser100
 2024-09-12T18:09:04.264+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-3] c.e.a.a.openAI.service.OpenAIApiService  : jeeeeeeeee 
-2024-09-12T18:09:04.264+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-3] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"\n    }"}], "max_tokens": 100}
+2024-09-12T18:09:04.264+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-3] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{
+\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"
+\n    }"}], "max_tokens": 100}
 2024-09-12T18:09:04.589+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-3] i.StatisticalLoggingSessionEventListener : Session Metrics {
     0 nanoseconds spent acquiring 0 JDBC connections;
     0 nanoseconds spent releasing 0 JDBC connections;
@@ -6661,7 +6671,11 @@ java.io.IOException: Unexpected code Response{protocol=h2, code=400, message=, u
 2024-09-12T18:09:42.039+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-5] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/openai/harmfulness
 2024-09-12T18:09:42.039+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-5] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: testuser100
 2024-09-12T18:09:42.041+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-5] c.e.a.a.openAI.service.OpenAIApiService  : jeeeeeeeee 
-2024-09-12T18:09:42.041+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-5] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "  \n{\n    \"modelType\" : \"llama-3.1-70b-versatile\",\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"\n}"}], "max_tokens": 100}
+2024-09-12T18:09:42.041+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-5] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "  
+\n{
+\n    \"modelType\" : \"llama-3.1-70b-versatile\",
+\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"
+\n}"}], "max_tokens": 100}
 2024-09-12T18:09:42.236+09:00  INFO 18488 --- [ai01] [http-nio-8080-exec-5] i.StatisticalLoggingSessionEventListener : Session Metrics {
     0 nanoseconds spent acquiring 0 JDBC connections;
     0 nanoseconds spent releasing 0 JDBC connections;
@@ -6971,7 +6985,9 @@ java.io.IOException: Unexpected code Response{protocol=h2, code=400, message=, u
 2024-09-12T18:11:26.641+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/openai/harmfulness
 2024-09-12T18:11:26.641+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: testuser100
 2024-09-12T18:11:26.643+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-3] c.e.a.a.openAI.service.OpenAIApiService  : jeeeeeeeee 
-2024-09-12T18:11:26.645+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-3] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"\n    }"}], "max_tokens": 100}
+2024-09-12T18:11:26.645+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-3] c.e.a.a.openAI.service.OpenAIApiService  : jsonBody: {"model": "gpt-4o-mini", "messages": [{"role": "system", "content": "You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10."}, {"role": "user", "content": "{
+\n    \"prompt\":\"저의 지방직 시험은 참담했던거 같아요. 합격을 하리라는 기대와는 달리 시험장을 나오는데 눈물이 앞을 가리더라고요. 참 부질없는 일이다, 뭐가 그렇게 어렵더냐하며 만족스럽지 못한 기분에 오지 않는 버스를 기다리며 하염없이 슬픈 눈을 하고 있었답니다. 예상했듯이 교육학이 복병이였는데… 예상치 못하게 앞선 과목에 에너지를 많이 뺏긴 영어가 난리가 났었죠. 시험이라는게 나의 노력과 운이 맞아떨어져야 하더라고요. 더디게라도 오르지 내려간 성적을 보는게 많이 힘들었습니다. 갑자기 처음으로 돌아간 느낌, 막막한 느낌이 확 오더라고요.어쨌든 23년 시험을 끝으로 그에 맞는 결정을 내리기를 생각했었기에 답이 있어야 하는데… 바닥으로 내려앉은 마음이 무언가 판단하기에 흐트러진 상태였습니다. 나는 무엇을 해야하는지, 내가 무엇을 하고 싶은지, 왜 공시에 발을 들였지라는 물음에 대해 다시 생각해야했고 주변과의 비교를 하게 되었죠. 그것도 싫을땐 아무것도 안해도 괜찮다며 지친 저를 쉬게 두기도 했습니다.그동안 공부와는 잠시 떨어져 지내며 시간을 보냈습니다. 다른 길도 찾아보고 아르바이트나 기간제 등의 자리도 알아보곤 했는데 장기간은 하고 싶지 않아 관뒀고 몇몇 일정과 약속 등 필요한 것 위주로 움직였어요. 그러다보니 시간은 가고 재촉이 되고 해서 시험 분석을 했고 아쉬움이라는 것이 생겼습니다. 쉬면서 tv나 유튜브 보다도 공스타랑 이웃 블로그를 들여다보는걸 보니 마음이 이쪽에 남아있더라고요. 그리고 MT-다원재능검사를 했는데 타고난 성향과 지금 가진 성질을 보았을때 공무원이 적성에 맞다고나와 아 잘못된 선택은 아니였구나 한번만 더 해볼까 끝으로?라는 결정을 내렸습니다.내 손으로 마무리 짓는다는것, 그리고 결과에 따른 움직임을 만들어 낸다는건 후회가 없어야하고 끝을 맺어야하더라고요. 아직 이 길에 미련이 있고 또 남는게 없다고 느낀다면 부족한 공부였다는 생각을 했어요. 실패하더라도 모든 과정이 경험으로 쌓이고 지식이 남아있을거고 성공하더라도 제대로 달려봤다, 진짜 내 힘으로 가진 거다는 그런 기분을 내고 싶어졌어요.\"
+\n    }"}], "max_tokens": 100}
 2024-09-12T18:11:27.002+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-3] i.StatisticalLoggingSessionEventListener : Session Metrics {
     0 nanoseconds spent acquiring 0 JDBC connections;
     0 nanoseconds spent releasing 0 JDBC connections;
@@ -7182,7 +7198,7 @@ java.io.IOException: Unexpected code Response{protocol=h2, code=400, message=, u
 2024-09-12T18:15:10.764+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-10] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: testuser100
 2024-09-12T18:15:10.771+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-10] c.e.a.a.a.s.AzureComputerVisionService   : Created endpoint: https://visiontestweb.cognitiveservices.azure.com/computervision/imageanalysis:analyze
 2024-09-12T18:15:10.772+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-10] c.e.a.a.a.s.AzureComputerVisionService   : Created body: {"features":["caption"],"language":"en","url":"https://picsum.photos/200"}
-2024-09-12T18:15:12.724+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-10] c.e.a.a.a.s.AzureComputerVisionService   : groqAPIRequest: com.example.ai01.ai.groq.dto.GroqApiRequest@1af130e1
+2024-09-12T18:15:12.724+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-10] c.e.a.a.a.s.AzureComputerVisionService   : groqAPIRequest: com.example.ai01.ai.groq.dto.request.GroqApiRequest@1af130e1
 2024-09-12T18:15:14.006+09:00  INFO 11780 --- [ai01] [http-nio-8080-exec-10] i.StatisticalLoggingSessionEventListener : Session Metrics {
     0 nanoseconds spent acquiring 0 JDBC connections;
     0 nanoseconds spent releasing 0 JDBC connections;
@@ -22525,4 +22541,109 @@ io.jsonwebtoken.MalformedJwtException: JWT strings must contain exactly 2 period
     0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
     0 nanoseconds spent executing 0 pre-partial-flushes;
     0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2024-09-15T18:43:42.161+09:00  INFO 8600 --- [ai01] [main] com.example.ai01.Ai01Application         : Starting Ai01Application using Java 21.0.3 with PID 8600 (C:\Cilab\myGitRepo\prometheus04\prometheus04\build\classes\java\main started by 82102 in C:\Cilab\myGitRepo\prometheus04\prometheus04)
+2024-09-15T18:43:42.163+09:00 DEBUG 8600 --- [ai01] [main] com.example.ai01.Ai01Application         : Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-15T18:43:42.164+09:00  INFO 8600 --- [ai01] [main] com.example.ai01.Ai01Application         : No active profile set, falling back to 1 default profile: "default"
+2024-09-15T18:43:43.776+09:00  INFO 8600 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-15T18:43:43.872+09:00  INFO 8600 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 1 JPA repository interface.
+2024-09-15T18:43:45.058+09:00  INFO 8600 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-15T18:43:45.462+09:00  INFO 8600 --- [ai01] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-15T18:43:45.464+09:00  INFO 8600 --- [ai01] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-15T18:43:45.588+09:00  INFO 8600 --- [ai01] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-15T18:43:45.589+09:00  INFO 8600 --- [ai01] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3344 ms
+2024-09-15T18:43:45.998+09:00 DEBUG 8600 --- [ai01] [main] c.e.ai01.security.filter.CustomFilter    : Filter 'customFilter' configured for use
+2024-09-15T18:43:45.999+09:00 DEBUG 8600 --- [ai01] [main] c.e.a.security.filter.JwtRequestFilter   : Filter 'jwtRequestFilter' configured for use
+2024-09-15T18:43:46.266+09:00  INFO 8600 --- [ai01] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-15T18:43:46.415+09:00  INFO 8600 --- [ai01] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-15T18:43:46.458+09:00  INFO 8600 --- [ai01] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-15T18:43:46.852+09:00  INFO 8600 --- [ai01] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-15T18:43:46.881+09:00  INFO 8600 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-15T18:43:47.213+09:00  INFO 8600 --- [ai01] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c7269ad
+2024-09-15T18:43:47.215+09:00  INFO 8600 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-15T18:43:47.273+09:00  WARN 8600 --- [ai01] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-15T18:43:48.162+09:00  INFO 8600 --- [ai01] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-15T18:43:48.215+09:00  INFO 8600 --- [ai01] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-15T18:43:48.664+09:00  INFO 8600 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2024-09-15T18:43:48.665+09:00  INFO 8600 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2024-09-15T18:43:48.799+09:00  INFO 8600 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2024-09-15T18:43:48.876+09:00  INFO 8600 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2024-09-15T18:43:48.883+09:00  INFO 8600 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2024-09-15T18:43:49.063+09:00  WARN 8600 --- [ai01] [main] r$InitializeUserDetailsManagerConfigurer : Found 2 UserDetailsService beans, with names [customUserDetailsService, userDetailsService]. Global Authentication Manager will not use a UserDetailsService for username/password login. Consider publishing a single UserDetailsService bean.
+2024-09-15T18:43:49.176+09:00  WARN 8600 --- [ai01] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-15T18:43:49.804+09:00  INFO 8600 --- [ai01] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoints beneath base path '/actuator'
+2024-09-15T18:43:50.316+09:00  INFO 8600 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-15T18:43:50.332+09:00  INFO 8600 --- [ai01] [main] com.example.ai01.Ai01Application         : Started Ai01Application in 8.871 seconds (process running for 9.397)
+2024-09-15T18:43:50.739+09:00  INFO 8600 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    1123600 nanoseconds spent acquiring 1 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    3225000 nanoseconds spent preparing 1 JDBC statements;
+    4238700 nanoseconds spent executing 1 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    205423764705101 nanoseconds spent executing 1 pre-partial-flushes;
+    19100 nanoseconds spent executing 1 partial-flushes (flushing a total of 0 entities and 0 collections)
 }

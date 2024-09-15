@@ -33,14 +33,14 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/groq/complete", "/api/vllm/complete", "/api/members/usage/**").authenticated()
-                        .anyRequest().permitAll()
+                        .requestMatchers("").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 );
 
-
+        // JwtRequestFilter를 사용하여 요청을 처리하기 전에 JWT 검증을 수행
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.addFilterAfter(customFilter, UsernamePasswordAuthenticationFilter.class);
 

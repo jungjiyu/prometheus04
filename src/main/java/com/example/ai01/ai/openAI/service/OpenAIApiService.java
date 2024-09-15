@@ -1,6 +1,6 @@
 package com.example.ai01.ai.openAI.service;
 
-import com.example.ai01.ai.openAI.dto.OpenAIRequest;
+import com.example.ai01.ai.openAI.dto.request.OpenAIRequest;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;

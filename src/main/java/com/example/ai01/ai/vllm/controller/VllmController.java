@@ -1,13 +1,10 @@
 package com.example.ai01.ai.vllm.controller;
 
-import com.example.ai01.ai.vllm.dto.VllmRequest;
+import com.example.ai01.ai.vllm.dto.request.VllmRequest;
 import com.example.ai01.ai.vllm.service.VllmService;
-import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 

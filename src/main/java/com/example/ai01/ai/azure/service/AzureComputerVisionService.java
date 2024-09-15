@@ -1,6 +1,6 @@
 package com.example.ai01.ai.azure.service;
 
-import com.example.ai01.ai.groq.dto.GroqApiRequest;
+import com.example.ai01.ai.groq.dto.request.GroqApiRequest;
 import com.example.ai01.ai.groq.service.GroqApiService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

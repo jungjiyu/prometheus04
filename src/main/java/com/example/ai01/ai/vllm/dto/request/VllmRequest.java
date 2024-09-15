@@ -1,4 +1,4 @@
-package com.example.ai01.ai.vllm.dto;
+package com.example.ai01.ai.vllm.dto.request;
 
 import lombok.*;
 

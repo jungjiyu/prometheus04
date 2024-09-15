@@ -1,6 +1,6 @@
 package com.example.ai01.ai.groq.service;
 
-import com.example.ai01.ai.groq.dto.GroqApiRequest;
+import com.example.ai01.ai.groq.dto.request.GroqApiRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

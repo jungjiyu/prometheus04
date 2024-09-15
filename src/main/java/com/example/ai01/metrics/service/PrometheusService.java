@@ -1,5 +1,8 @@
 package com.example.ai01.metrics.service;
 
+import com.example.ai01.metrics.dto.ServiceMetricsDTO;
+import com.example.ai01.metrics.dto.response.PrometheusResponse;
+import com.example.ai01.security.util.JwtUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,12 +12,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 
 
 @Slf4j
@@ -23,6 +27,7 @@ import java.util.Map;
 public class PrometheusService {
 
     private final RestTemplate restTemplate;
+    private final JwtUtil jwtUtil;  // JWT 유틸리티 추가
 
     @Value("${prometheus.api.url}")
     private String prometheusUrl;
@@ -33,16 +38,38 @@ public class PrometheusService {
     @Value("${cost.vllm}")
     private double vllmCost;
 
+    @Value("${cost.azure}")
+    private double azureCost;
 
-    public String query(String query) {
-        // 서비스명을 hostname으로 하여 Prometheus에 HTTP 쿼리날리기
-        // Prometheus POST 요청 URL << JSON 데이터 보낼때 get 요청 쓰면  "Not enough variable values available to expand" 에러가 발생한다
+    @Value("${cost.openai}")
+    private double openaiCost;
+
+    // 사용자별 JWT 토큰 캐싱(크기 제한 없이 사용)
+    private final Map<String, String> jwtCache = new HashMap<>();
+
+
+    // 사용자에 따른 JWT 토큰 재사용 로직 & 만료된 경우 갱신
+    private String getJwtToken(String userId) {
+        String token = jwtCache.get(userId);
+        if (token == null || jwtUtil.isTokenExpired(token)) {
+            token = jwtUtil.generateToken(userId);
+            jwtCache.put(userId, token);
+        }
+        return token;
+    }
+
+    // Prometheus 쿼리 실행
+    public String query(String query, String userId) {
         String prometheusUrl = UriComponentsBuilder.fromHttpUrl(this.prometheusUrl)
                 .encode()
                 .toUriString();
 
+        // JWT 토큰 가져오기
+        String jwtToken = getJwtToken(userId);
+
         // HTTP 헤더 설정
         HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(jwtToken);  // JWT Bearer Token 설정
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
         // 요청 본문 설정 (쿼리를 form 데이터로 전송)
@@ -53,74 +80,121 @@ public class PrometheusService {
         return restTemplate.postForObject(prometheusUrl, requestEntity, String.class);
     }
 
-    public Map<String, Object> getJsonFormatUserUsage(String userId) {
-        // 각 경로별 요청 수를 구하는 Prometheus 쿼리
-        String queryGroq = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/groq/complete\"})", userId);
-        String queryVllm = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/vllm/complete\"})", userId);
+    public PrometheusResponse.UsageMetrics getJsonFormatUserUsage(String userId) {
 
-        String resultGroq = query(queryGroq);
-        String resultVllm = query(queryVllm);
+        /*
+        //groq
+        String totalGroqQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/groq/.*\"})", userId);
+        String completeGroqQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/groq/complete\"})", userId);
+        String adviceGroqQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/groq/advice\"})", userId);
+        String harmfulnessGroqQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/groq/harmfulness\"})", userId);
+        String composeGroqQuery= String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/groq/compose\"})", userId);
 
-        log.info("Prometheus /api/groq/complete 쿼리 결과: {}", resultGroq);
-        log.info("Prometheus /api/vllm/complete 쿼리 결과: {}", resultVllm);
+        //openai
+        String totalOpenaiQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/openai/.*\"})", userId);
+        String completeOpenaiQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/openai/complete\"})", userId);
+        String adviceOpenaiQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/openai/advice\"})", userId);
+        String harmfulnessOpenaiQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/openai/harmfulness\"})", userId);
+        String composeOpenaiQuery =  String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/openai/compose\"})", userId);
 
-        Map<String, Object> usageData = new HashMap<>();
-        double totalCost = 0.0;
-        double totalRequestCount = 0.0;
+        //azure
+        String totalAzureQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/azure/.*\"})", userId);
+        String captionAzureQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/azure/caption\"})", userId);
 
-        // Groq 쿼리 결과 처리
-        double groqRequestCount = processQueryResult(resultGroq, "/api/groq/complete", groqCost, usageData);
-        // Vllm 쿼리 결과 처리
-        double vllmRequestCount = processQueryResult(resultVllm, "/api/vllm/complete", vllmCost, usageData);
+*/
 
-        // 총 요청 수와 총 비용 계산
-        totalRequestCount = groqRequestCount + vllmRequestCount;
-        totalCost = (groqRequestCount * groqCost) + (vllmRequestCount * vllmCost);
 
-        usageData.put("total_request_count", totalRequestCount);  // 전체 요청 수
-        usageData.put("total_cost", totalCost);                  // 전체 비용
-        usageData.put("user_id", userId);
+        // 각 서비스별 경로 정보 정의
+        Map<String, String[]> paths = Map.of(
+                "groq", new String[]{"/api/groq/.*", "/api/groq/complete", "/api/groq/advice", "/api/groq/harmfulness", "/api/groq/compose"},
+                "openai", new String[]{"/api/openai/.*", "/api/openai/complete", "/api/openai/advice", "/api/openai/harmfulness", "/api/openai/compose"},
+                "azure", new String[]{"/api/azure/.*", "/api/azure/caption"},
+                "vllm", new String[]{"/api/vllm/.*"}
+        );
 
-        return usageData;
+        Map<String, Double> costMap = Map.of(
+                "groq", groqCost,
+                "openai", openaiCost,
+                "azure", azureCost,
+                "vllm", vllmCost
+        );
+
+        PrometheusResponse.UsageMetrics usageMetrics = new PrometheusResponse.UsageMetrics();
+        Map<String, ServiceMetricsDTO> requestsData = new HashMap<>();
+        Map<String, ServiceMetricsDTO> costData = new HashMap<>();
+
+        for (String serviceName : paths.keySet()) {
+            String[] servicePaths = paths.get(serviceName);
+            double serviceCost = costMap.get(serviceName);
+
+            ServiceMetricsDTO serviceRequests = new ServiceMetricsDTO();
+            ServiceMetricsDTO serviceCosts = new ServiceMetricsDTO();
+
+            for (String path : servicePaths) {
+                String query = buildPrometheusQuery(userId, path);  // 쿼리 생성 로직 분리
+                String result = query(query, userId);
+
+                log.debug("Prometheus {} query result for path {}: {}", serviceName, path, result);
+                double requestCount = processQueryResult(result, path, serviceCost).orElse(0.0);
+
+                String cleanedPath = path.replace("/api/", "").replace("/", "_");
+
+                if (path.contains(".*")) {
+                    serviceRequests.setTotal(requestCount);
+                    serviceCosts.setTotal(requestCount * serviceCost);
+                } else {
+                    serviceRequests.addPathMetric(cleanedPath, requestCount);
+                    serviceCosts.addPathMetric(cleanedPath, requestCount * serviceCost);
+                }
+            }
+
+            requestsData.put(serviceName, serviceRequests);
+            costData.put(serviceName, serviceCosts);
+        }
+
+        // 총 요청 수 및 비용 계산
+        double totalRequests = requestsData.values().stream()
+                .flatMap(map -> map.getPaths().values().stream())
+                .mapToDouble(Double::doubleValue)
+                .sum();
+
+        double totalCost = costData.values().stream()
+                .flatMap(map -> map.getPaths().values().stream())
+                .mapToDouble(Double::doubleValue)
+                .sum();
+
+        usageMetrics.setRequests(requestsData);
+        usageMetrics.setCost(costData);
+        usageMetrics.setTotalRequestCount(totalRequests);
+        usageMetrics.setTotalCost(totalCost);
+        usageMetrics.setUserId(userId);
+
+        return usageMetrics;
+    }
+
+    // Prometheus 쿼리 빌드 로직 분리
+    private String buildPrometheusQuery(String userId, String path) {
+        return String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"%s\"})", userId, path);
     }
 
     // 쿼리 결과를 처리하는 함수
-    private double processQueryResult(String result, String path, double costPerRequest, Map<String, Object> usageData) {
+    private Optional<Double> processQueryResult(String result, String path, double costPerRequest) {
         ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode rootNode;
         try {
-            rootNode = objectMapper.readTree(result);
-        } catch (JsonProcessingException e) {
-            log.error("Error processing Prometheus response for {}: {}", path, e.getMessage());
-            usageData.put("error", "Error processing Prometheus response");
-            return 0.0;
-        }
-
-        JsonNode dataNode = rootNode.path("data").path("result");
-        log.info("dataNode for {}: {}", path, dataNode.toString());
-
-        double requestCount = 0.0;
-        if (dataNode.isArray() && dataNode.size() > 0) {
-            for (JsonNode node : dataNode) {
-                JsonNode valueNode = node.path("value");
-                log.info("valueNode for {}: {}", path, valueNode.toString());
-
+            JsonNode rootNode = objectMapper.readTree(result);
+            JsonNode dataNode = rootNode.path("data").path("result");
+            if (dataNode.isArray() && dataNode.size() > 0) {
+                JsonNode valueNode = dataNode.get(0).path("value");
                 if (valueNode.isArray() && valueNode.size() > 1) {
-                    requestCount = valueNode.get(1).asDouble();
-                    double cost = requestCount * costPerRequest;
-                    usageData.put(path + "_request_count", requestCount);  // 경로별 요청 수
-                    usageData.put(path + "_cost", cost);                  // 경로별 비용
-                } else {
-                    log.warn("valueNode가 예상과 다른 형식입니다 for {}: {}", path, valueNode.toString());
+                    return Optional.of(valueNode.get(1).asDouble());
                 }
             }
-        } else {
-            log.warn("No data found for path: {}", path);
-            usageData.put(path + "_request_count", 0);
-            usageData.put(path + "_cost", 0.0);
+        } catch (JsonProcessingException e) {
+            log.error("Error processing Prometheus response for {}: {}", path, e.getMessage());
         }
-
-        return requestCount;
+        log.warn("No valid data found for path: {}", path);
+        return Optional.empty();
     }
 
 }
+

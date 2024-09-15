@@ -12,15 +12,14 @@ public class AzureComputerVisionController {
     private final AzureComputerVisionService azureComputerVisionService;
 
     @PostMapping("/caption")
-    public String createImageCaption(@RequestParam("imageUrl") String imageUrl) {
+    public String createImageCaption(@RequestParam("imageUrl") String imageUrl,
+                                     @RequestParam(value = "lang", defaultValue = "en") String lang) {
+        if ("kr".equalsIgnoreCase(lang)) {
+            return azureComputerVisionService.createKoreanImageCaptionWithGroq(imageUrl);
+        }
         return azureComputerVisionService.createImageCaption(imageUrl);
     }
 
-
-    @PostMapping("/caption/kr")
-    public String createKoreanImageCaptionWithGroq(@RequestParam("imageUrl") String imageUrl) {
-        return azureComputerVisionService.createKoreanImageCaptionWithGroq(imageUrl);
-    }
 
 
 

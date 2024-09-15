@@ -20,12 +20,17 @@ import java.io.IOException;
 @Component
 public class CustomFilter extends OncePerRequestFilter {
 
-
     @Value("${cost.groq}")
     private double groqCost;
 
     @Value("${cost.vllm}")
     private double vllmCost;
+
+    @Value("${cost.azure}")
+    private double azureCost;
+
+    @Value("${cost.openai}")
+    private double openaiCost;
 
     private final MeterRegistry meterRegistry;
 
@@ -40,7 +45,7 @@ public class CustomFilter extends OncePerRequestFilter {
         String method = request.getMethod();
 
         // /metrics 및 /actuator 경로를 필터에서 제외
-        if (!path.startsWith("/metrics") && !path.startsWith("/actuator") && !path.startsWith("/api/members/login")) {
+        if (!path.startsWith("/metrics") && !path.startsWith("/actuator") && !path.startsWith("/api/prometheus/usage")) {
             log.info("Filtering request to path: {}", path);
 
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -80,11 +85,13 @@ public class CustomFilter extends OncePerRequestFilter {
 
     // 특정 path에 따른 비용을 결정하는 로직
     private double getCostForPath(String path) {
-        if (path.equals("/api/groq/complete")) {
-            return groqCost; // /api/groq/complete 경로의 비용
-        } else if (path.equals("/api/vllm/complete")) {
-            return vllmCost; // /api/vllm/complete 경로의 비용
-        }
+
+        // 정규표현식 비교에는 equals 가 아닌 matches 사용 필요
+        if (path.matches("/api/groq/.*"))  return groqCost;
+        else if (path.matches("/api/vllm/.*")) return vllmCost;
+        else if (path.matches("/api/openai/.*")) return openaiCost;
+        else if (path.matches("/api/azure/.*")) return azureCost;
+
         return 0.0; // 다른 경로는 비용이 없다고 가정
     }}
 

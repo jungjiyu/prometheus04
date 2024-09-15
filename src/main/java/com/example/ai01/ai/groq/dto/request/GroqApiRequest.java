@@ -1,11 +1,11 @@
-package com.example.ai01.ai.openAI.dto;
+package com.example.ai01.ai.groq.dto.request;
 
 import lombok.*;
 
 import java.util.List;
 
 
-public class OpenAIRequest {
+public class GroqApiRequest {
 
 
     @Data
@@ -13,19 +13,18 @@ public class OpenAIRequest {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Basic {
-        private String model;
         private String prompt;
+        private String modelType;
     }
+
 
     @Data
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
     public static class TextCompose {
-        private String model;
         private List<String> sentences;
+        private String modelType;
     }
-
-
 
 }

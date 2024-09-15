@@ -1,6 +1,6 @@
 package com.example.ai01.ai.openAI.controller;
 
-import com.example.ai01.ai.openAI.dto.OpenAIRequest;
+import com.example.ai01.ai.openAI.dto.request.OpenAIRequest;
 import com.example.ai01.ai.openAI.service.OpenAIApiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
