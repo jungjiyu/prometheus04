@@ -1,5 +1,6 @@
 package com.example.ai01.metrics.service;
 
+import com.example.ai01.global.exception.JwtTokenExpiredException;
 import com.example.ai01.metrics.dto.ServiceMetricsDTO;
 import com.example.ai01.metrics.dto.response.PrometheusResponse;
 import com.example.ai01.security.util.JwtUtil;
@@ -26,6 +27,7 @@ import java.util.*;
 @Service
 public class PrometheusService {
 
+
     private final RestTemplate restTemplate;
     private final JwtUtil jwtUtil;  // JWT 유틸리티 추가
 
@@ -45,26 +47,26 @@ public class PrometheusService {
     private double openaiCost;
 
     // 사용자별 JWT 토큰 캐싱(크기 제한 없이 사용)
-    private final Map<String, String> jwtCache = new HashMap<>();
+    private final Map<String, String> jwtCache = new HashMap<>(); // jwtCache 정의 추가
 
 
-    // 사용자에 따른 JWT 토큰 재사용 로직 & 만료된 경우 갱신
-    private String getJwtToken(String userId) {
+
+    // 사용자에 따른 JWT 토큰 검증 로직 (토큰 갱신 없이)
+    private String getJwtToken(String userId) throws Exception {
         String token = jwtCache.get(userId);
         if (token == null || jwtUtil.isTokenExpired(token)) {
-            token = jwtUtil.generateToken(userId);
-            jwtCache.put(userId, token);
+            throw new Exception("JWT token expired or not found for user: " + userId);
         }
         return token;
     }
 
     // Prometheus 쿼리 실행
-    public String query(String query, String userId) {
+    public String query(String query, String userId) throws Exception {
         String prometheusUrl = UriComponentsBuilder.fromHttpUrl(this.prometheusUrl)
                 .encode()
                 .toUriString();
 
-        // JWT 토큰 가져오기
+        // JWT 토큰 가져오기 (갱신 없이 만료된 경우 에러 반환)
         String jwtToken = getJwtToken(userId);
 
         // HTTP 헤더 설정
@@ -77,32 +79,15 @@ public class PrometheusService {
         HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
 
         // POST 요청 전송
-        return restTemplate.postForObject(prometheusUrl, requestEntity, String.class);
+        try {
+            return restTemplate.postForObject(prometheusUrl, requestEntity, String.class);
+        } catch (Exception e) {
+            log.error("Error while querying Prometheus API for user {}: {}", userId, e.getMessage());
+            throw new Exception("Error querying Prometheus API", e);
+        }
     }
 
-    public PrometheusResponse.UsageMetrics getJsonFormatUserUsage(String userId) {
-
-        /*
-        //groq
-        String totalGroqQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/groq/.*\"})", userId);
-        String completeGroqQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/groq/complete\"})", userId);
-        String adviceGroqQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/groq/advice\"})", userId);
-        String harmfulnessGroqQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/groq/harmfulness\"})", userId);
-        String composeGroqQuery= String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/groq/compose\"})", userId);
-
-        //openai
-        String totalOpenaiQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/openai/.*\"})", userId);
-        String completeOpenaiQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/openai/complete\"})", userId);
-        String adviceOpenaiQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/openai/advice\"})", userId);
-        String harmfulnessOpenaiQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/openai/harmfulness\"})", userId);
-        String composeOpenaiQuery =  String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/openai/compose\"})", userId);
-
-        //azure
-        String totalAzureQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/azure/.*\"})", userId);
-        String captionAzureQuery = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"/api/azure/caption\"})", userId);
-
-*/
-
+    public PrometheusResponse.UsageMetrics getJsonFormatUserUsage(String userId) throws Exception {
 
         // 각 서비스별 경로 정보 정의
         Map<String, String[]> paths = Map.of(
@@ -132,7 +117,7 @@ public class PrometheusService {
 
             for (String path : servicePaths) {
                 String query = buildPrometheusQuery(userId, path);  // 쿼리 생성 로직 분리
-                String result = query(query, userId);
+                String result = query(query, userId);  // JWT만으로 요청
 
                 log.debug("Prometheus {} query result for path {}: {}", serviceName, path, result);
                 double requestCount = processQueryResult(result, path, serviceCost).orElse(0.0);
@@ -195,6 +180,4 @@ public class PrometheusService {
         log.warn("No valid data found for path: {}", path);
         return Optional.empty();
     }
-
 }
-

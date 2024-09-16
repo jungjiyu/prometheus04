@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @Component
 public class JwtUtil {
 
@@ -26,9 +27,8 @@ public class JwtUtil {
     private long expirationTime;  // 토큰 만료 시간 (밀리초 단위)
 
     private PublicKey publicKey;
-    private PrivateKey privateKey;
 
-    // 생성자에서 public_key.pem 및 private_key.pem 파일을 읽어와 공개 키와 개인 키를 초기화
+    // 생성자에서 public_key.pem 파일을 읽어와 공개 키 초기화
     public JwtUtil() throws Exception {
         // 공개 키 로드
         String publicKeyPath = "keys/public_key.pem";
@@ -45,37 +45,36 @@ public class JwtUtil {
         X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(publicKeyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         this.publicKey = keyFactory.generatePublic(publicKeySpec);
-
-        // 개인 키 로드
-        String privateKeyPath = "keys/private_key.pem";
-        InputStream privateKeyStream = getClass().getClassLoader().getResourceAsStream(privateKeyPath);
-        if (privateKeyStream == null) {
-            throw new IllegalArgumentException("Private key file not found: " + privateKeyPath);
-        }
-        String privateKeyContent = new String(privateKeyStream.readAllBytes(), StandardCharsets.UTF_8)
-                .replace("-----BEGIN PRIVATE KEY-----", "")
-                .replace("-----END PRIVATE KEY-----", "")
-                .replaceAll("\\s", "");
-
-        byte[] privateKeyBytes = Base64.getDecoder().decode(privateKeyContent);
-        PKCS8EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
-        this.privateKey = keyFactory.generatePrivate(privateKeySpec);
     }
 
-    // JWT 생성 메서드
-    public String generateToken(String username) {
+    // JWT 생성 메서드 (클라이언트로부터 받은 privateKey 사용)
+    public String generateToken(String username, String privateKeyString) throws Exception {
+        PrivateKey privateKey = loadPrivateKeyFromString(privateKeyString);
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, username);
+        return createToken(claims, username, privateKey);
+    }
+
+    // privateKey String을 PrivateKey 객체로 변환
+    private PrivateKey loadPrivateKeyFromString(String privateKeyString) throws Exception {
+        byte[] privateKeyBytes = Base64.getDecoder().decode(
+                privateKeyString
+                        .replace("-----BEGIN PRIVATE KEY-----", "")
+                        .replace("-----END PRIVATE KEY-----", "")
+                        .replaceAll("\\s", "")
+        );
+        PKCS8EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        return keyFactory.generatePrivate(privateKeySpec);
     }
 
     // 실제 JWT 생성 및 서명
-    private String createToken(Map<String, Object> claims, String subject) {
+    private String createToken(Map<String, Object> claims, String subject, PrivateKey privateKey) {
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
-                .signWith(privateKey, SignatureAlgorithm.RS256)  // 개인 키로 RSA 서명
+                .signWith(privateKey, SignatureAlgorithm.RS256)  // 클라이언트에서 받은 private key로 서명
                 .compact();
     }
 
@@ -101,4 +100,5 @@ public class JwtUtil {
     // 토큰 검증 (서명 및 사용자명 확인)
     public boolean validateToken(String token, String username) {
         return (username.equals(extractUsername(token)) && !isTokenExpired(token));
-    }}
+    }
+}
