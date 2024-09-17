@@ -1,14 +1,13 @@
 package com.example.ai01.metrics.dto.response;
 
 import com.example.ai01.metrics.dto.ServiceMetricsDTO;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Map;
 
 public class PrometheusResponse {
+
+    @ToString
     @Data
     @Builder
     @NoArgsConstructor

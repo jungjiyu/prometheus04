@@ -1,9 +1,7 @@
 package com.example.ai01.metrics.service;
 
-import com.example.ai01.global.exception.JwtTokenExpiredException;
 import com.example.ai01.metrics.dto.ServiceMetricsDTO;
 import com.example.ai01.metrics.dto.response.PrometheusResponse;
-import com.example.ai01.security.util.JwtUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,10 +24,7 @@ import java.util.*;
 @RequiredArgsConstructor
 @Service
 public class PrometheusService {
-
-
     private final RestTemplate restTemplate;
-    private final JwtUtil jwtUtil;  // JWT 유틸리티 추가
 
     @Value("${prometheus.api.url}")
     private String prometheusUrl;
@@ -46,39 +41,21 @@ public class PrometheusService {
     @Value("${cost.openai}")
     private double openaiCost;
 
-    // 사용자별 JWT 토큰 캐싱(크기 제한 없이 사용)
-    private final Map<String, String> jwtCache = new HashMap<>(); // jwtCache 정의 추가
-
-
-
-    // 사용자에 따른 JWT 토큰 검증 로직 (토큰 갱신 없이)
-    private String getJwtToken(String userId) throws Exception {
-        String token = jwtCache.get(userId);
-        if (token == null || jwtUtil.isTokenExpired(token)) {
-            throw new Exception("JWT token expired or not found for user: " + userId);
-        }
-        return token;
-    }
-
     // Prometheus 쿼리 실행
     public String query(String query, String userId) throws Exception {
+        log.debug("Building Prometheus query URL for userId: {}", userId);
+
         String prometheusUrl = UriComponentsBuilder.fromHttpUrl(this.prometheusUrl)
                 .encode()
                 .toUriString();
 
-        // JWT 토큰 가져오기 (갱신 없이 만료된 경우 에러 반환)
-        String jwtToken = getJwtToken(userId);
-
-        // HTTP 헤더 설정
         HttpHeaders headers = new HttpHeaders();
-        headers.setBearerAuth(jwtToken);  // JWT Bearer Token 설정
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
-        // 요청 본문 설정 (쿼리를 form 데이터로 전송)
         String requestBody = "query=" + query;
         HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
 
-        // POST 요청 전송
+        log.info("Sending Prometheus query for userId: {}, query: {}", userId, query);
         try {
             return restTemplate.postForObject(prometheusUrl, requestEntity, String.class);
         } catch (Exception e) {
@@ -87,9 +64,10 @@ public class PrometheusService {
         }
     }
 
+    // 사용자의 메트릭 데이터를 Prometheus에서 조회
     public PrometheusResponse.UsageMetrics getJsonFormatUserUsage(String userId) throws Exception {
+        log.info("Fetching Prometheus usage metrics for userId: {}", userId);
 
-        // 각 서비스별 경로 정보 정의
         Map<String, String[]> paths = Map.of(
                 "groq", new String[]{"/api/groq/.*", "/api/groq/complete", "/api/groq/advice", "/api/groq/harmfulness", "/api/groq/compose"},
                 "openai", new String[]{"/api/openai/.*", "/api/openai/complete", "/api/openai/advice", "/api/openai/harmfulness", "/api/openai/compose"},
@@ -116,10 +94,11 @@ public class PrometheusService {
             ServiceMetricsDTO serviceCosts = new ServiceMetricsDTO();
 
             for (String path : servicePaths) {
-                String query = buildPrometheusQuery(userId, path);  // 쿼리 생성 로직 분리
-                String result = query(query, userId);  // JWT만으로 요청
+                String query = buildPrometheusQuery(userId, path);
+                log.debug("Running query for service: {}, path: {}", serviceName, path);
+                String result = query(query, userId);
 
-                log.debug("Prometheus {} query result for path {}: {}", serviceName, path, result);
+                log.debug("Prometheus query result for service: {}, path: {}, result: {}", serviceName, path, result);
                 double requestCount = processQueryResult(result, path, serviceCost).orElse(0.0);
 
                 String cleanedPath = path.replace("/api/", "").replace("/", "_");
@@ -137,7 +116,6 @@ public class PrometheusService {
             costData.put(serviceName, serviceCosts);
         }
 
-        // 총 요청 수 및 비용 계산
         double totalRequests = requestsData.values().stream()
                 .flatMap(map -> map.getPaths().values().stream())
                 .mapToDouble(Double::doubleValue)
@@ -154,15 +132,18 @@ public class PrometheusService {
         usageMetrics.setTotalCost(totalCost);
         usageMetrics.setUserId(userId);
 
+        log.info("Successfully fetched Prometheus usage metrics for userId: {}", userId);
         return usageMetrics;
     }
 
-    // Prometheus 쿼리 빌드 로직 분리
+    // Prometheus 쿼리 빌드
     private String buildPrometheusQuery(String userId, String path) {
-        return String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=\"%s\"})", userId, path);
+        String query = String.format("sum(http_server_requests_user_total{user_id=\"%s\", path=~\"%s\"})", userId, path);
+        log.debug("Built Prometheus query: {}", query);
+        return query;
     }
 
-    // 쿼리 결과를 처리하는 함수
+    // 쿼리 결과 처리
     private Optional<Double> processQueryResult(String result, String path, double costPerRequest) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -171,11 +152,15 @@ public class PrometheusService {
             if (dataNode.isArray() && dataNode.size() > 0) {
                 JsonNode valueNode = dataNode.get(0).path("value");
                 if (valueNode.isArray() && valueNode.size() > 1) {
+                    log.debug("Processing query result for path: {}, value: {}", path, valueNode.get(1).asDouble());
                     return Optional.of(valueNode.get(1).asDouble());
                 }
+            } else {
+                log.warn("No data returned from Prometheus for path: {}", path);
+                return Optional.of(0.0); // 데이터가 없을 때 기본값 0 반환
             }
         } catch (JsonProcessingException e) {
-            log.error("Error processing Prometheus response for {}: {}", path, e.getMessage());
+            log.error("Error processing Prometheus response for path {}: {}", path, e.getMessage());
         }
         log.warn("No valid data found for path: {}", path);
         return Optional.empty();

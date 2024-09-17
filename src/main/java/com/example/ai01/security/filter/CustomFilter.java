@@ -1,10 +1,12 @@
 package com.example.ai01.security.filter;
 
+import com.example.ai01.user.service.UserService;
 import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -16,6 +18,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+
+@RequiredArgsConstructor
 @Slf4j
 @Component
 public class CustomFilter extends OncePerRequestFilter {
@@ -33,10 +37,8 @@ public class CustomFilter extends OncePerRequestFilter {
     private double openaiCost;
 
     private final MeterRegistry meterRegistry;
+    private final UserService userService;
 
-    public CustomFilter(MeterRegistry meterRegistry) {
-        this.meterRegistry = meterRegistry;
-    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -45,7 +47,7 @@ public class CustomFilter extends OncePerRequestFilter {
         String method = request.getMethod();
 
         // /metrics 및 /actuator 경로를 필터에서 제외
-        if (!path.startsWith("/metrics") && !path.startsWith("/actuator") && !path.startsWith("/api/prometheus/usage")) {
+        if (!path.startsWith("/metrics") && !path.startsWith("/actuator") && !path.startsWith("/api/user/token") && !path.startsWith("/api/user/usage")) {
             log.info("Filtering request to path: {}", path);
 
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -59,6 +61,9 @@ public class CustomFilter extends OncePerRequestFilter {
                 } else if (principal != null) {
                     userId = principal.toString();
                 }
+
+                // 사용자 정보 확인 및 자동 추가 로직
+                checkAndAddUserIfNotExists(userId);
 
                 log.info("Registering metric for user_id: {}", userId);
             } else {
@@ -93,5 +98,15 @@ public class CustomFilter extends OncePerRequestFilter {
         else if (path.matches("/api/azure/.*")) return azureCost;
 
         return 0.0; // 다른 경로는 비용이 없다고 가정
-    }}
+    }
+
+    private void checkAndAddUserIfNotExists(String username) {
+        if (!userService.existsByUsername(username)) {
+            log.info("User {} not found, creating new entry.", username);
+            userService.saveUser(username);  // 없으면 자동으로 추가
+        }
+    }
+
+
+}
 

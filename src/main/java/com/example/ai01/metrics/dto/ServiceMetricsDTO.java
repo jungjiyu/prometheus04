@@ -11,7 +11,7 @@ import java.util.Map;
 @Data
 @Builder
 public class ServiceMetricsDTO {
-    private Map<String, Double> paths;
+    private Map<String, Double> paths = new HashMap<>(); // 기본적으로 빈 Map으로 초기화
     private double total;
 
     public void addPathMetric(String path, double value) {
