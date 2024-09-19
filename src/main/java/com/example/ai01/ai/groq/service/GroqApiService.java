@@ -85,6 +85,34 @@ public class GroqApiService {
     }
 
 
+    public String summarizeNews(GroqApiRequest.NewsSummary request) {
+        String url = "https://api.groq.com/openai/v1/chat/completions";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + apiKey);
+        headers.set("Content-Type", "application/json");
+
+        // 뉴스 링크의 줄 바꿈 문자 및 특수 문자 제거
+        String sanitizedNewsLink = request.getNewsLink().replace("\r", "").replace("\n", "").replace("\"", "\\\"");
+
+        String requestJson = String.format(
+                "{\"messages\": [{" +
+                        "\"role\": \"system\", \"content\": \"You are a competent assistant. Analyze the news link provided below and provide a concise explanation in Korean.\"}," +
+                        "{\"role\": \"user\", \"content\": \"%s\"}]," +
+                        "\"model\": \"%s\"}",
+                sanitizedNewsLink,
+                request.getModelType()
+        );
+
+        HttpEntity<String> entity = new HttpEntity<>(requestJson, headers);
+        log.info("News Link Request JSON: {}", requestJson);
+
+        return restTemplate.exchange(url, HttpMethod.POST, entity, String.class).getBody();
+    }
+
+
+
+
 
 
 

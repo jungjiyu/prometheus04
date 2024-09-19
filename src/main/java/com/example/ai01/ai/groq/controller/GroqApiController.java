@@ -42,5 +42,11 @@ public class GroqApiController {
     }
 
 
+    @PostMapping("/news")
+    public String summarizeNews(@RequestBody GroqApiRequest.NewsSummary request) throws IOException {
+        return groqApiService.summarizeNews(request);
+    }
+
+
 
 }

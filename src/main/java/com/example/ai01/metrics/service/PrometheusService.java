@@ -69,7 +69,7 @@ public class PrometheusService {
         log.info("Fetching Prometheus usage metrics for userId: {}", userId);
 
         Map<String, String[]> paths = Map.of(
-                "groq", new String[]{"/api/groq/.*", "/api/groq/complete", "/api/groq/advice", "/api/groq/harmfulness", "/api/groq/compose"},
+                "groq", new String[]{"/api/groq/.*", "/api/groq/complete", "/api/groq/advice", "/api/groq/harmfulness", "/api/groq/compose", "/api/groq/news"},
                 "openai", new String[]{"/api/openai/.*", "/api/openai/complete", "/api/openai/advice", "/api/openai/harmfulness", "/api/openai/compose"},
                 "azure", new String[]{"/api/azure/.*", "/api/azure/caption"},
                 "vllm", new String[]{"/api/vllm/.*"}
@@ -135,6 +135,7 @@ public class PrometheusService {
         log.info("Successfully fetched Prometheus usage metrics for userId: {}", userId);
         return usageMetrics;
     }
+
 
     // Prometheus 쿼리 빌드
     private String buildPrometheusQuery(String userId, String path) {

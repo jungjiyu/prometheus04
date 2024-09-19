@@ -28,6 +28,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .cors(cors -> cors // Spring Security에서 CORS 설정 활성화
+                        .configurationSource(request -> {
+                            var corsConfig = new org.springframework.web.cors.CorsConfiguration();
+                            corsConfig.addAllowedOrigin("http://localhost:3000"); // 허용할 origin
+                            corsConfig.addAllowedMethod("*"); // 허용할 메소드 (GET, POST, PUT, DELETE 등)
+                            corsConfig.addAllowedHeader("*"); // 허용할 헤더
+                            corsConfig.setAllowCredentials(true); // 쿠키 허용
+                            return corsConfig;
+                        })
+                )
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/user/token","/actuator/**").permitAll()

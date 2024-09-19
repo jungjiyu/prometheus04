@@ -27,4 +27,16 @@ public class GroqApiRequest {
         private String modelType;
     }
 
+
+
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class NewsSummary {
+        private String newsLink;
+        private String modelType;
+    }
+
+
 }
