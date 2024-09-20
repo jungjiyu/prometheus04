@@ -43,7 +43,6 @@ public class UserController {
         try {
             PrometheusResponse.UsageMetrics response = prometheusService.getJsonFormatUserUsage(userId);
             log.info(" created response for userId {}: {}", userId,response.toString());
-
             return ResponseEntity.status(HttpStatus.OK).body(response);
         } catch (Exception e) {
             log.error("Error fetching usage metrics for userId {}: {}", userId, e.getMessage(), e);
