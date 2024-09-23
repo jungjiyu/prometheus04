@@ -43,13 +43,13 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/user/token","/actuator/**").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 );
 
-        // JwtRequestFilter를 사용하여 요청을 처리하기 전에 JWT 검증을 수행
+        // JwtRequestFilter를 사용하여 요청을 처리하기 전에 JWT 검증을 수`행
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.addFilterAfter(customFilter, UsernamePasswordAuthenticationFilter.class);
 

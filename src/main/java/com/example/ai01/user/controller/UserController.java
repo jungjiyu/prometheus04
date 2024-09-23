@@ -36,19 +36,37 @@ public class UserController {
 
 
 
+//    @GetMapping("/usage")
+//    public ResponseEntity<PrometheusResponse.UsageMetrics> getJsonFormatUserUsage() {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String userId = authentication.getName(); // 사용자 아이디 가져오기
+//        try {
+//            PrometheusResponse.UsageMetrics response = prometheusService.getJsonFormatUserUsage(userId);
+//            log.info(" created response for userId {}: {}", userId,response.toString());
+//
+//            return ResponseEntity.status(HttpStatus.OK).body(response);
+//        } catch (Exception e) {
+//            log.error("Error fetching usage metrics for userId {}: {}", userId, e.getMessage(), e);
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//    }
+
     @GetMapping("/usage")
-    public ResponseEntity<PrometheusResponse.UsageMetrics> getJsonFormatUserUsage() {
+    public ResponseEntity<String> getJsonFormatUserUsage() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userId = authentication.getName(); // 사용자 아이디 가져오기
         try {
             PrometheusResponse.UsageMetrics response = prometheusService.getJsonFormatUserUsage(userId);
             log.info(" created response for userId {}: {}", userId,response.toString());
-            return ResponseEntity.status(HttpStatus.OK).body(response);
+
+            return ResponseEntity.status(HttpStatus.OK).body(response.toString());
         } catch (Exception e) {
             log.error("Error fetching usage metrics for userId {}: {}", userId, e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+
 
 
 
