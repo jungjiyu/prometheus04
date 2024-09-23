@@ -97,7 +97,7 @@ public class GroqApiService {
 
         String requestJson = String.format(
                 "{\"messages\": [{" +
-                        "\"role\": \"system\", \"content\": \"You are a competent assistant. Analyze the news link provided below and provide a concise explanation in Korean.\"}," +
+                        "\"role\": \"system\", \"content\": \"Summarize the news link provided below.\"}," +
                         "{\"role\": \"user\", \"content\": \"%s\"}]," +
                         "\"model\": \"%s\"}",
                 sanitizedNewsLink,

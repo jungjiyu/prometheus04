@@ -111,7 +111,7 @@ public class OpenAIApiService {
 
     public String summarizeNews(String newsLink) throws IOException {
         String jsonBody = String.format(
-                "{\"model\": \"gpt-4o-mini\", \"messages\": [{" +
+                "{\"model\": \"gpt-4o\", \"messages\": [{" +
                         "\"role\": \"system\", \"content\": \"You are a competent assistant. Analyze the news link provided below and provide a concise explanation in Korean.\"}," +
                         "{\"role\": \"user\", \"content\": \"{\\\"newsLink\\\": \\\"https://zdnet.co.kr/view/?no=20240917051057\\\"}\"}]}",
                 newsLink

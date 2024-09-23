@@ -9881,3 +9881,301 @@ Caused by: java.net.UnknownHostException: mysql-container
 	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:62) ~[mysql-connector-j-8.3.0.jar:8.3.0]
 	... 142 common frames omitted
 
+2024-09-23T15:19:30.610+09:00  INFO 18696 --- [ai01] [main] com.example.ai01.Ai01Application         : Starting Ai01Application using Java 21.0.4 with PID 18696 (C:\jiyu\springboot_project\0923\prometheus04\build\classes\java\main started by jiyu in C:\jiyu\springboot_project\0923\prometheus04)
+2024-09-23T15:19:30.612+09:00 DEBUG 18696 --- [ai01] [main] com.example.ai01.Ai01Application         : Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-23T15:19:30.613+09:00  INFO 18696 --- [ai01] [main] com.example.ai01.Ai01Application         : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T15:19:31.696+09:00  INFO 18696 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T15:19:31.764+09:00  INFO 18696 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 1 JPA repository interface.
+2024-09-23T15:19:32.675+09:00  INFO 18696 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T15:19:32.961+09:00  INFO 18696 --- [ai01] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T15:19:32.962+09:00  INFO 18696 --- [ai01] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-23T15:19:33.054+09:00  INFO 18696 --- [ai01] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T15:19:33.054+09:00  INFO 18696 --- [ai01] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2391 ms
+2024-09-23T15:19:33.221+09:00  INFO 18696 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T15:19:33.388+09:00  INFO 18696 --- [ai01] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-09-23T15:19:33.389+09:00  INFO 18696 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T15:19:33.401+09:00  INFO 18696 --- [ai01] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-09-23T15:19:33.589+09:00  INFO 18696 --- [ai01] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T15:19:33.687+09:00  INFO 18696 --- [ai01] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-23T15:19:33.738+09:00  INFO 18696 --- [ai01] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T15:19:34.116+09:00  INFO 18696 --- [ai01] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T15:19:34.177+09:00  WARN 18696 --- [ai01] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-23T15:19:34.976+09:00  INFO 18696 --- [ai01] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23T15:19:35.026+09:00  INFO 18696 --- [ai01] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T15:19:35.410+09:00 DEBUG 18696 --- [ai01] [main] c.e.ai01.security.filter.CustomFilter    : Filter 'customFilter' configured for use
+2024-09-23T15:19:35.411+09:00 DEBUG 18696 --- [ai01] [main] c.e.a.security.filter.JwtRequestFilter   : Filter 'jwtRequestFilter' configured for use
+2024-09-23T15:19:35.724+09:00  WARN 18696 --- [ai01] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23T15:19:36.228+09:00  INFO 18696 --- [ai01] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoints beneath base path '/actuator'
+2024-09-23T15:19:36.674+09:00  INFO 18696 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-23T15:19:36.683+09:00  INFO 18696 --- [ai01] [main] com.example.ai01.Ai01Application         : Started Ai01Application in 6.544 seconds (process running for 6.958)
+2024-09-23T15:19:48.102+09:00  INFO 18696 --- [ai01] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-23T15:19:48.102+09:00  INFO 18696 --- [ai01] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-23T15:19:48.103+09:00  INFO 18696 --- [ai01] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-23T15:19:48.189+09:00 ERROR 18696 --- [ai01] [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+io.jsonwebtoken.ExpiredJwtException: JWT expired at 2024-09-21T07:50:02Z. Current time: 2024-09-23T06:19:48Z, a difference of 167386185 milliseconds.  Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:427) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:529) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:589) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at io.jsonwebtoken.impl.ImmutableJwtParser.parseClaimsJws(ImmutableJwtParser.java:173) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at com.example.ai01.security.util.JwtUtil.extractAllClaims(JwtUtil.java:86) ~[main/:na]
+	at com.example.ai01.security.util.JwtUtil.extractUsername(JwtUtil.java:92) ~[main/:na]
+	at com.example.ai01.security.filter.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:36) ~[main/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.12.jar:6.1.12]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.12.jar:6.1.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-09-23T15:20:06.385+09:00  INFO 18696 --- [ai01] [http-nio-8080-exec-4] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/openai/news
+2024-09-23T15:20:06.523+09:00  INFO 18696 --- [ai01] [http-nio-8080-exec-4] c.e.ai01.security.filter.CustomFilter    : User www not found, creating new entry.
+2024-09-23T15:20:06.563+09:00  INFO 18696 --- [ai01] [http-nio-8080-exec-4] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: www
+2024-09-23T15:20:06.568+09:00  INFO 18696 --- [ai01] [http-nio-8080-exec-4] c.e.a.a.openAI.service.OpenAIApiService  : News Link Analysis Request Body (Korean): {"model": "gpt-4o", "messages": [{"role": "system", "content": "You are a competent assistant. Analyze the news link provided below and provide a concise explanation in Korean."},{"role": "user", "content": "{\"newsLink\": \"https://zdnet.co.kr/view/?no=20240917051057\"}"}]}
+2024-09-23T15:20:06.585+09:00  INFO 18696 --- [ai01] [http-nio-8080-exec-4] c.e.a.a.openAI.service.OpenAIApiService  : Request: Request{method=POST, url=https://api.openai.com/v1/chat/completions, headers=[Authorization:██]}
+2024-09-23T15:22:18.356+09:00  INFO 8508 --- [ai01] [main] com.example.ai01.Ai01Application         : Starting Ai01Application using Java 21.0.4 with PID 8508 (C:\jiyu\springboot_project\0923\prometheus04\build\classes\java\main started by jiyu in C:\jiyu\springboot_project\0923\prometheus04)
+2024-09-23T15:22:18.358+09:00 DEBUG 8508 --- [ai01] [main] com.example.ai01.Ai01Application         : Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-23T15:22:18.359+09:00  INFO 8508 --- [ai01] [main] com.example.ai01.Ai01Application         : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T15:22:19.308+09:00  INFO 8508 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T15:22:19.367+09:00  INFO 8508 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 1 JPA repository interface.
+2024-09-23T15:22:20.136+09:00  INFO 8508 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T15:22:20.346+09:00  INFO 8508 --- [ai01] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T15:22:20.346+09:00  INFO 8508 --- [ai01] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-23T15:22:20.438+09:00  INFO 8508 --- [ai01] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T15:22:20.438+09:00  INFO 8508 --- [ai01] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2034 ms
+2024-09-23T15:22:20.582+09:00  INFO 8508 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T15:22:20.751+09:00  INFO 8508 --- [ai01] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-09-23T15:22:20.753+09:00  INFO 8508 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T15:22:20.764+09:00  INFO 8508 --- [ai01] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-09-23T15:22:20.941+09:00  INFO 8508 --- [ai01] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T15:22:21.006+09:00  INFO 8508 --- [ai01] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-23T15:22:21.043+09:00  INFO 8508 --- [ai01] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T15:22:21.366+09:00  INFO 8508 --- [ai01] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T15:22:21.412+09:00  WARN 8508 --- [ai01] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-23T15:22:22.161+09:00  INFO 8508 --- [ai01] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23T15:22:22.208+09:00  INFO 8508 --- [ai01] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T15:22:22.577+09:00 DEBUG 8508 --- [ai01] [main] c.e.ai01.security.filter.CustomFilter    : Filter 'customFilter' configured for use
+2024-09-23T15:22:22.578+09:00 DEBUG 8508 --- [ai01] [main] c.e.a.security.filter.JwtRequestFilter   : Filter 'jwtRequestFilter' configured for use
+2024-09-23T15:22:22.903+09:00  WARN 8508 --- [ai01] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23T15:22:23.349+09:00  INFO 8508 --- [ai01] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoints beneath base path '/actuator'
+2024-09-23T15:22:23.759+09:00  INFO 8508 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-23T15:22:23.769+09:00  INFO 8508 --- [ai01] [main] com.example.ai01.Ai01Application         : Started Ai01Application in 5.817 seconds (process running for 6.19)
+2024-09-23T15:22:26.349+09:00  INFO 8508 --- [ai01] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-23T15:22:26.349+09:00  INFO 8508 --- [ai01] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-23T15:22:26.351+09:00  INFO 8508 --- [ai01] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-23T15:22:53.286+09:00  INFO 8508 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/groq/news
+2024-09-23T15:22:53.433+09:00  INFO 8508 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : User www not found, creating new entry.
+2024-09-23T15:22:53.475+09:00  INFO 8508 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: www
+2024-09-23T15:22:53.496+09:00  INFO 8508 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.ai.groq.service.GroqApiService  : News Link Request JSON: {"messages": [{"role": "system", "content": "한국어로 해당 링크의 뉴스 내용을 요약해줘."},{"role": "user", "content": "https://zdnet.co.kr/view/?no=20240917051057"}],"model": "llama-3.1-70b-versatile"}
+2024-09-23T15:25:09.362+09:00  INFO 4740 --- [ai01] [main] com.example.ai01.Ai01Application         : Starting Ai01Application using Java 21.0.4 with PID 4740 (C:\jiyu\springboot_project\0923\prometheus04\build\classes\java\main started by jiyu in C:\jiyu\springboot_project\0923\prometheus04)
+2024-09-23T15:25:09.363+09:00 DEBUG 4740 --- [ai01] [main] com.example.ai01.Ai01Application         : Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-23T15:25:09.364+09:00  INFO 4740 --- [ai01] [main] com.example.ai01.Ai01Application         : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T15:25:10.387+09:00  INFO 4740 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T15:25:10.449+09:00  INFO 4740 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 1 JPA repository interface.
+2024-09-23T15:25:11.275+09:00  INFO 4740 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T15:25:11.511+09:00  INFO 4740 --- [ai01] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T15:25:11.512+09:00  INFO 4740 --- [ai01] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-23T15:25:11.595+09:00  INFO 4740 --- [ai01] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T15:25:11.596+09:00  INFO 4740 --- [ai01] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2175 ms
+2024-09-23T15:25:11.752+09:00  INFO 4740 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T15:25:11.921+09:00  INFO 4740 --- [ai01] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-09-23T15:25:11.923+09:00  INFO 4740 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T15:25:11.933+09:00  INFO 4740 --- [ai01] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-09-23T15:25:12.118+09:00  INFO 4740 --- [ai01] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T15:25:12.179+09:00  INFO 4740 --- [ai01] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-23T15:25:12.219+09:00  INFO 4740 --- [ai01] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T15:25:12.538+09:00  INFO 4740 --- [ai01] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T15:25:12.581+09:00  WARN 4740 --- [ai01] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-23T15:25:13.321+09:00  INFO 4740 --- [ai01] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23T15:25:13.373+09:00  INFO 4740 --- [ai01] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T15:25:13.721+09:00 DEBUG 4740 --- [ai01] [main] c.e.ai01.security.filter.CustomFilter    : Filter 'customFilter' configured for use
+2024-09-23T15:25:13.722+09:00 DEBUG 4740 --- [ai01] [main] c.e.a.security.filter.JwtRequestFilter   : Filter 'jwtRequestFilter' configured for use
+2024-09-23T15:25:14.030+09:00  WARN 4740 --- [ai01] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23T15:25:14.504+09:00  INFO 4740 --- [ai01] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoints beneath base path '/actuator'
+2024-09-23T15:25:14.926+09:00  INFO 4740 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-23T15:25:14.938+09:00  INFO 4740 --- [ai01] [main] com.example.ai01.Ai01Application         : Started Ai01Application in 5.982 seconds (process running for 6.348)
+2024-09-23T15:25:25.526+09:00  INFO 4740 --- [ai01] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-23T15:25:25.527+09:00  INFO 4740 --- [ai01] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-23T15:25:25.528+09:00  INFO 4740 --- [ai01] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-23T15:25:36.275+09:00  INFO 4740 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/groq/news
+2024-09-23T15:25:36.408+09:00  INFO 4740 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : User www not found, creating new entry.
+2024-09-23T15:25:36.462+09:00  INFO 4740 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: www
+2024-09-23T15:25:36.486+09:00  INFO 4740 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.ai.groq.service.GroqApiService  : News Link Request JSON: {"messages": [{"role": "system", "content": "You are a competent assistant. Summarize the news link provided below."},{"role": "user", "content": "https://zdnet.co.kr/view/?no=20240917051057"}],"model": "llama-3.1-70b-versatile"}
+2024-09-23T15:29:17.837+09:00  INFO 4072 --- [ai01] [main] com.example.ai01.Ai01Application         : Starting Ai01Application using Java 21.0.4 with PID 4072 (C:\jiyu\springboot_project\0923\prometheus04\build\classes\java\main started by jiyu in C:\jiyu\springboot_project\0923\prometheus04)
+2024-09-23T15:29:17.839+09:00 DEBUG 4072 --- [ai01] [main] com.example.ai01.Ai01Application         : Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-23T15:29:17.840+09:00  INFO 4072 --- [ai01] [main] com.example.ai01.Ai01Application         : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T15:29:18.875+09:00  INFO 4072 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T15:29:18.945+09:00  INFO 4072 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 1 JPA repository interface.
+2024-09-23T15:29:19.758+09:00  INFO 4072 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T15:29:20.015+09:00  INFO 4072 --- [ai01] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T15:29:20.015+09:00  INFO 4072 --- [ai01] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-23T15:29:20.114+09:00  INFO 4072 --- [ai01] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T15:29:20.115+09:00  INFO 4072 --- [ai01] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2219 ms
+2024-09-23T15:29:20.284+09:00  INFO 4072 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T15:29:20.455+09:00  INFO 4072 --- [ai01] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-09-23T15:29:20.457+09:00  INFO 4072 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T15:29:20.466+09:00  INFO 4072 --- [ai01] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-09-23T15:29:20.644+09:00  INFO 4072 --- [ai01] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T15:29:20.711+09:00  INFO 4072 --- [ai01] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-23T15:29:20.754+09:00  INFO 4072 --- [ai01] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T15:29:21.070+09:00  INFO 4072 --- [ai01] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T15:29:21.109+09:00  WARN 4072 --- [ai01] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-23T15:29:21.835+09:00  INFO 4072 --- [ai01] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23T15:29:21.883+09:00  INFO 4072 --- [ai01] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T15:29:22.284+09:00 DEBUG 4072 --- [ai01] [main] c.e.ai01.security.filter.CustomFilter    : Filter 'customFilter' configured for use
+2024-09-23T15:29:22.284+09:00 DEBUG 4072 --- [ai01] [main] c.e.a.security.filter.JwtRequestFilter   : Filter 'jwtRequestFilter' configured for use
+2024-09-23T15:29:22.631+09:00  WARN 4072 --- [ai01] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23T15:29:23.134+09:00  INFO 4072 --- [ai01] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoints beneath base path '/actuator'
+2024-09-23T15:29:23.571+09:00  INFO 4072 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-23T15:29:23.582+09:00  INFO 4072 --- [ai01] [main] com.example.ai01.Ai01Application         : Started Ai01Application in 6.157 seconds (process running for 6.516)
+2024-09-23T15:29:24.206+09:00  INFO 4072 --- [ai01] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-23T15:29:24.206+09:00  INFO 4072 --- [ai01] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-23T15:29:24.207+09:00  INFO 4072 --- [ai01] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-23T15:29:32.788+09:00  INFO 4072 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/groq/news
+2024-09-23T15:29:32.923+09:00  INFO 4072 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : User www not found, creating new entry.
+2024-09-23T15:29:32.967+09:00  INFO 4072 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: www
+2024-09-23T15:29:32.989+09:00  INFO 4072 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.ai.groq.service.GroqApiService  : News Link Request JSON: {"messages": [{"role": "system", "content": "You are a competent assistant. Analyze and summarize the news link provided below without additional context."},{"role": "user", "content": "https://zdnet.co.kr/view/?no=20240917051057"}],"model": "llama-3.1-70b-versatile"}
+2024-09-23T15:31:53.677+09:00  INFO 17832 --- [ai01] [main] com.example.ai01.Ai01Application         : Starting Ai01Application using Java 21.0.4 with PID 17832 (C:\jiyu\springboot_project\0923\prometheus04\build\classes\java\main started by jiyu in C:\jiyu\springboot_project\0923\prometheus04)
+2024-09-23T15:31:53.679+09:00 DEBUG 17832 --- [ai01] [main] com.example.ai01.Ai01Application         : Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-23T15:31:53.680+09:00  INFO 17832 --- [ai01] [main] com.example.ai01.Ai01Application         : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T15:31:54.651+09:00  INFO 17832 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T15:31:54.713+09:00  INFO 17832 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 1 JPA repository interface.
+2024-09-23T15:31:55.546+09:00  INFO 17832 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T15:31:55.778+09:00  INFO 17832 --- [ai01] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T15:31:55.778+09:00  INFO 17832 --- [ai01] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-23T15:31:55.858+09:00  INFO 17832 --- [ai01] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T15:31:55.858+09:00  INFO 17832 --- [ai01] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2133 ms
+2024-09-23T15:31:56.013+09:00  INFO 17832 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T15:31:56.176+09:00  INFO 17832 --- [ai01] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-09-23T15:31:56.178+09:00  INFO 17832 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T15:31:56.187+09:00  INFO 17832 --- [ai01] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-09-23T15:31:56.363+09:00  INFO 17832 --- [ai01] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T15:31:56.428+09:00  INFO 17832 --- [ai01] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-23T15:31:56.463+09:00  INFO 17832 --- [ai01] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T15:31:56.793+09:00  INFO 17832 --- [ai01] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T15:31:56.837+09:00  WARN 17832 --- [ai01] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-23T15:31:57.552+09:00  INFO 17832 --- [ai01] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23T15:31:57.600+09:00  INFO 17832 --- [ai01] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T15:31:57.961+09:00 DEBUG 17832 --- [ai01] [main] c.e.ai01.security.filter.CustomFilter    : Filter 'customFilter' configured for use
+2024-09-23T15:31:57.962+09:00 DEBUG 17832 --- [ai01] [main] c.e.a.security.filter.JwtRequestFilter   : Filter 'jwtRequestFilter' configured for use
+2024-09-23T15:31:58.245+09:00  WARN 17832 --- [ai01] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23T15:31:58.719+09:00  INFO 17832 --- [ai01] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoints beneath base path '/actuator'
+2024-09-23T15:31:59.142+09:00  INFO 17832 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-23T15:31:59.154+09:00  INFO 17832 --- [ai01] [main] com.example.ai01.Ai01Application         : Started Ai01Application in 5.908 seconds (process running for 6.281)
+2024-09-23T15:32:22.607+09:00  INFO 17832 --- [ai01] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-23T15:32:22.608+09:00  INFO 17832 --- [ai01] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-23T15:32:22.609+09:00  INFO 17832 --- [ai01] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-23T15:32:29.722+09:00  INFO 17832 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/groq/news
+2024-09-23T15:32:29.857+09:00  INFO 17832 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : User www not found, creating new entry.
+2024-09-23T15:32:29.895+09:00  INFO 17832 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: www
+2024-09-23T15:32:29.915+09:00  INFO 17832 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.ai.groq.service.GroqApiService  : News Link Request JSON: {"messages": [{"role": "system", "content": "You are a competent assistant. Summarize the news link provided below."},{"role": "user", "content": "https://zdnet.co.kr/view/?no=20240917051057"}],"model": "llama-3.1-70b-versatile"}
+2024-09-23T15:32:54.836+09:00  INFO 17832 --- [ai01] [http-nio-8080-exec-4] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/groq/news
+2024-09-23T15:32:54.838+09:00  INFO 17832 --- [ai01] [http-nio-8080-exec-4] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: www
+2024-09-23T15:32:54.840+09:00  INFO 17832 --- [ai01] [http-nio-8080-exec-4] c.e.ai01.ai.groq.service.GroqApiService  : News Link Request JSON: {"messages": [{"role": "system", "content": "You are a competent assistant. Summarize the news link provided below."},{"role": "user", "content": "https://zdnet.co.kr/view/?no=20240917051057"}],"model": "llama-3.1-70b-versatile"}
+2024-09-23T15:33:45.984+09:00  INFO 16800 --- [ai01] [main] com.example.ai01.Ai01Application         : Starting Ai01Application using Java 21.0.4 with PID 16800 (C:\jiyu\springboot_project\0923\prometheus04\build\classes\java\main started by jiyu in C:\jiyu\springboot_project\0923\prometheus04)
+2024-09-23T15:33:45.986+09:00 DEBUG 16800 --- [ai01] [main] com.example.ai01.Ai01Application         : Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-23T15:33:45.987+09:00  INFO 16800 --- [ai01] [main] com.example.ai01.Ai01Application         : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T15:33:46.981+09:00  INFO 16800 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T15:33:47.040+09:00  INFO 16800 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 1 JPA repository interface.
+2024-09-23T15:33:47.892+09:00  INFO 16800 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T15:33:48.138+09:00  INFO 16800 --- [ai01] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T15:33:48.138+09:00  INFO 16800 --- [ai01] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-23T15:33:48.221+09:00  INFO 16800 --- [ai01] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T15:33:48.221+09:00  INFO 16800 --- [ai01] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2185 ms
+2024-09-23T15:33:48.381+09:00  INFO 16800 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T15:33:48.558+09:00  INFO 16800 --- [ai01] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-09-23T15:33:48.561+09:00  INFO 16800 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T15:33:48.570+09:00  INFO 16800 --- [ai01] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-09-23T15:33:48.749+09:00  INFO 16800 --- [ai01] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T15:33:48.821+09:00  INFO 16800 --- [ai01] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-23T15:33:48.862+09:00  INFO 16800 --- [ai01] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T15:33:49.189+09:00  INFO 16800 --- [ai01] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T15:33:49.226+09:00  WARN 16800 --- [ai01] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-23T15:33:49.974+09:00  INFO 16800 --- [ai01] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23T15:33:50.021+09:00  INFO 16800 --- [ai01] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T15:33:50.390+09:00 DEBUG 16800 --- [ai01] [main] c.e.ai01.security.filter.CustomFilter    : Filter 'customFilter' configured for use
+2024-09-23T15:33:50.391+09:00 DEBUG 16800 --- [ai01] [main] c.e.a.security.filter.JwtRequestFilter   : Filter 'jwtRequestFilter' configured for use
+2024-09-23T15:33:50.707+09:00  WARN 16800 --- [ai01] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23T15:33:51.182+09:00  INFO 16800 --- [ai01] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoints beneath base path '/actuator'
+2024-09-23T15:33:51.599+09:00  INFO 16800 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-23T15:33:51.610+09:00  INFO 16800 --- [ai01] [main] com.example.ai01.Ai01Application         : Started Ai01Application in 6.033 seconds (process running for 6.399)
+2024-09-23T15:33:51.987+09:00  INFO 16800 --- [ai01] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-23T15:33:51.987+09:00  INFO 16800 --- [ai01] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-23T15:33:51.988+09:00  INFO 16800 --- [ai01] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-23T15:34:02.159+09:00  INFO 16800 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Filtering request to path: /api/groq/news
+2024-09-23T15:34:02.296+09:00  INFO 16800 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : User www not found, creating new entry.
+2024-09-23T15:34:02.336+09:00  INFO 16800 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: www
+2024-09-23T15:34:02.359+09:00  INFO 16800 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.ai.groq.service.GroqApiService  : News Link Request JSON: {"messages": [{"role": "system", "content": "Summarize the news link provided below."},{"role": "user", "content": "https://zdnet.co.kr/view/?no=20240917051057"}],"model": "llama-3.1-70b-versatile"}

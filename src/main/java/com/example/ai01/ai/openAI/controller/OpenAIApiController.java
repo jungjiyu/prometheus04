@@ -46,14 +46,14 @@ public class OpenAIApiController {
 
 
     // 뉴스 요약 -> 지원 안됨 (링크 분석 불가하다고 답변함)
-    /* 
+    /*
     @PostMapping("/news")
     public String summarizeNews(@RequestBody String newsLink) throws IOException {
         return openAIService.summarizeNews(newsLink);
     }
-
-    
      */
+
+
 
 
 
