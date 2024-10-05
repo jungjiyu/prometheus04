@@ -34,6 +34,7 @@ public class SecurityConfig {
                         .configurationSource(request -> {
                             var corsConfig = new org.springframework.web.cors.CorsConfiguration();
                             corsConfig.addAllowedOrigin("http://localhost:3000");// 허용할 origin
+                            corsConfig.addAllowedOrigin("http://storyb.kr");// 허용할 origin
                             corsConfig.addAllowedMethod("*"); // 허용할 메소드 (GET, POST, PUT, DELETE 등)
                             corsConfig.addAllowedHeader("*"); // 허용할 헤더
                             corsConfig.setAllowCredentials(true); // 쿠키 허용

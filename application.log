@@ -10179,3 +10179,30 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2024-09-21T07:50:02Z. Curren
 2024-09-23T15:34:02.296+09:00  INFO 16800 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : User www not found, creating new entry.
 2024-09-23T15:34:02.336+09:00  INFO 16800 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.security.filter.CustomFilter    : Registering metric for user_id: www
 2024-09-23T15:34:02.359+09:00  INFO 16800 --- [ai01] [http-nio-8080-exec-3] c.e.ai01.ai.groq.service.GroqApiService  : News Link Request JSON: {"messages": [{"role": "system", "content": "Summarize the news link provided below."},{"role": "user", "content": "https://zdnet.co.kr/view/?no=20240917051057"}],"model": "llama-3.1-70b-versatile"}
+2024-09-24T10:33:20.948+09:00  INFO 16004 --- [ai01] [main] com.example.ai01.Ai01Application         : Starting Ai01Application using Java 21.0.4 with PID 16004 (C:\jiyu\springboot_project\0923\prometheus04\build\classes\java\main started by jiyu in C:\jiyu\springboot_project\0923\prometheus04)
+2024-09-24T10:33:20.950+09:00 DEBUG 16004 --- [ai01] [main] com.example.ai01.Ai01Application         : Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-24T10:33:20.950+09:00  INFO 16004 --- [ai01] [main] com.example.ai01.Ai01Application         : No active profile set, falling back to 1 default profile: "default"
+2024-09-24T10:33:22.117+09:00  INFO 16004 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-24T10:33:22.194+09:00  INFO 16004 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 1 JPA repository interface.
+2024-09-24T10:33:23.114+09:00  INFO 16004 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-24T10:33:23.409+09:00  INFO 16004 --- [ai01] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-24T10:33:23.410+09:00  INFO 16004 --- [ai01] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-24T10:33:23.499+09:00  INFO 16004 --- [ai01] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-24T10:33:23.500+09:00  INFO 16004 --- [ai01] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2501 ms
+2024-09-24T10:33:23.678+09:00  INFO 16004 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-24T10:33:23.896+09:00  INFO 16004 --- [ai01] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-09-24T10:33:23.897+09:00  INFO 16004 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-24T10:33:23.907+09:00  INFO 16004 --- [ai01] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-09-24T10:33:24.129+09:00  INFO 16004 --- [ai01] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-24T10:33:24.226+09:00  INFO 16004 --- [ai01] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-24T10:33:24.273+09:00  INFO 16004 --- [ai01] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-24T10:33:24.647+09:00  INFO 16004 --- [ai01] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-24T10:33:24.708+09:00  WARN 16004 --- [ai01] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-24T10:33:25.500+09:00  INFO 16004 --- [ai01] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-24T10:33:25.556+09:00  INFO 16004 --- [ai01] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-24T10:33:26.008+09:00 DEBUG 16004 --- [ai01] [main] c.e.ai01.security.filter.CustomFilter    : Filter 'customFilter' configured for use
+2024-09-24T10:33:26.008+09:00 DEBUG 16004 --- [ai01] [main] c.e.a.security.filter.JwtRequestFilter   : Filter 'jwtRequestFilter' configured for use
+2024-09-24T10:33:26.414+09:00  WARN 16004 --- [ai01] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-24T10:33:26.974+09:00  INFO 16004 --- [ai01] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoints beneath base path '/actuator'
+2024-09-24T10:33:27.465+09:00  INFO 16004 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-24T10:33:27.479+09:00  INFO 16004 --- [ai01] [main] com.example.ai01.Ai01Application         : Started Ai01Application in 6.955 seconds (process running for 7.332)
